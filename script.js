@@ -1,4 +1,3 @@
-//your code here
 let total = 0;
 
 function addItem() {
@@ -28,7 +27,7 @@ function addItem() {
 
     const priceCell = document.createElement('td');
     priceCell.setAttribute('data-ns-test', 'item-price');
-    priceCell.textContent = itemPrice.toFixed(2);
+    priceCell.textContent = itemPrice.toFixed(2);  // Ensures the price always shows 2 decimal places
 
     // Append name and price to the new row
     newRow.appendChild(nameCell);
@@ -39,7 +38,9 @@ function addItem() {
 
     // Update grand total in the table
     const grandTotalElement = document.querySelector('[data-ns-test="grandTotal"]');
-    grandTotalElement.textContent = total.toFixed(2);
+
+    // Display total as an integer if it doesn't have decimal places
+    grandTotalElement.textContent = (total % 1 === 0) ? total.toFixed(0) : total.toFixed(2);
 
     // Clear input fields
     itemNameInput.value = '';
